@@ -11,9 +11,20 @@
 #include <string>
 
 namespace capture {
+	using boost::shared_ptr;
 	using std::vector;
 	using std::string;
-	using boost::shared_ptr;
+	using std::unique_ptr;
+	
+	struct Interval {
+		Interval() : numerator(), denominator() {}
+		Interval(uint32_t, uint32_t);
+		bool operator==(Interval const &) const;
+		uint32_t numerator;
+		uint32_t denominator;
+	};
+	typedef vector    <Interval    > IntervalList;
+	typedef shared_ptr<IntervalList> IntervalListPtr;
 	
 	struct FrameSize {
 		FrameSize() : width(), height() {}
@@ -52,6 +63,7 @@ namespace capture {
 	InfoPtr          query     (int);
 	FormatListPtr    formats   (int);
 	FrameSizeListPtr frameSizes(int, uint32_t);
+	IntervalListPtr  intervals (int, uint32_t, uint32_t, uint32_t);
 }
 
 #endif

@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-fPIC -std=c++11 -Wall -pedantic -I/usr/include/python3.4m
+CXXFLAGS=-g -fPIC -std=c++11 -Wall -pedantic -I/usr/include/python3.4m
 LDFLAGS=-lpython3.4m -lboost_python3 -lboost_system
 OBJ=scan/native/capture.o
 
